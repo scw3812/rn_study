@@ -3,10 +3,14 @@ import {View, Text, StyleSheet} from 'react-native';
 import Header from './src/Header';
 
 class App extends Component {
+  state = {
+    appName: 'My first App',
+  };
+
   render() {
     return (
       <View style={styles.mainView}>
-        <Header />
+        <Header title={this.state.appName} />
         <View style={styles.childView}>
           <Text style={styles.mainText}>Hello World</Text>
         </View>
