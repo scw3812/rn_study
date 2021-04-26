@@ -1,11 +1,18 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 const Header = ({title}) => {
   return (
-    <View style={styles.header}>
-      <Text>{title}</Text>
-    </View>
+    <TouchableOpacity
+      style={styles.header}
+      // onPress={() => alert('hello world')}
+      onLongPress={() => alert('long pressed')}
+      onPressIn={()=>alert('pressin')}
+      onPressOut={()=>alert('pressout')}>
+      <View>
+        <Text>{title}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
