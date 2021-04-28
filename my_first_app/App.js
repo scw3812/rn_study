@@ -1,44 +1,91 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import Header from './src/Header';
-import Generator from './src/Generator';
-import NumList from './src/NumList';
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
+import Picker from './src/Picker';
+// import Header from './src/Header';
+// import Generator from './src/Generator';
+// import NumList from './src/NumList';
+// import Input from './src/Input';
 
 class App extends Component {
   state = {
-    appName: 'My first App',
-    random: [36, 999],
+    // appName: 'My first App',
+    // random: [36, 999],
+    myTextInput: '',
+    alphabet: [],
   };
 
-  onAddRandomNum = () => {
-    const randomNum = Math.floor(Math.random() * 100) + 1;
-    this.setState((prevState) => {
-      return {
-        random: [...prevState.random, randomNum],
-      };
+  // onAddRandomNum = () => {
+  //   const randomNum = Math.floor(Math.random() * 100) + 1;
+  //   this.setState((prevState) => {
+  //     return {
+  //       random: [...prevState.random, randomNum],
+  //     };
+  //   });
+  // };
+
+  // onNumDelete = (idx) => {
+  //   const newArr = this.state.random;
+  //   newArr.splice(idx, 1);
+
+  //   this.setState({
+  //     random: newArr,
+  //   });
+  // };
+
+  onChangeInput = (event) => {
+    this.setState({
+      myTextInput: event,
     });
   };
 
-  onNumDelete = (idx) => {
-    const newArr = this.state.random;
-    newArr.splice(idx, 1);
-
-    this.setState({
-      random: newArr,
+  onAddTextInput = () => {
+    this.setState((prevState) => {
+      return {
+        myTextInput: '',
+        alphabet: [...prevState.alphabet, prevState.myTextInput],
+      };
     });
   };
 
   render() {
     return (
       <View style={styles.mainView}>
-        <Header title={this.state.appName} />
+        <Picker />
+        <TextInput
+          value={this.state.myTextInput}
+          style={styles.input}
+          onChangeText={this.onChangeInput}
+          multiline={true}
+          maxLength={10}
+          autoCapitalize="sentences"
+          editable={true}
+        />
+        <Button title="Add text Input" onPress={this.onAddTextInput} />
+        <ScrollView style={{width: '100%'}}>
+          {this.state.alphabet.map((value, index) => (
+            <Text style={styles.mainText} key={index}>
+              {value}
+            </Text>
+          ))}
+        </ScrollView>
+        {/* <Header title={this.state.appName} />
         <View style={styles.childView}>
           <Text style={styles.mainText} onPress={this.onAddRandomNum}>
             Hello World
           </Text>
         </View>
         <Generator add={this.onAddRandomNum} />
-        <NumList num={this.state.random} delete={this.onNumDelete} />
+        <ScrollView style={{width: '100%'}} bounces={false}>
+          <NumList num={this.state.random} delete={this.onNumDelete} />
+        </ScrollView> */}
       </View>
     );
   }
@@ -51,14 +98,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // justifyContent: 'center',
   },
-  childView: {
-    backgroundColor: 'yellow',
-    marginBottom: 10,
-  },
+  // childView: {
+  //   backgroundColor: 'yellow',
+  //   marginBottom: 10,
+  // },
   mainText: {
+    width: '100%',
     fontSize: 20,
     fontWeight: 'normal',
     color: 'red',
+    padding: 10,
+    margin: 20,
+    backgroundColor: 'pink',
+  },
+  input: {
+    backgroundColor: '#cecece',
+    width: '100%',
+    marginTop: 20,
+    fontSize: 25,
     padding: 10,
   },
 });
