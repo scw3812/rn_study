@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, ActivityIndicator} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import Slider from '@react-native-community/slider';
 
@@ -36,6 +36,12 @@ class PickerComponent extends Component {
           step={1}
         />
         <Text style={styles.input}>{this.state.value}</Text>
+        <ActivityIndicator
+          size="large"
+          color="green"
+          animating={true}
+          style={{padding: 10}}
+        />
         <Picker
           style={{height: 50, width: 250}}
           selectedValue={this.state.country}

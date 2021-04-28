@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {
@@ -7,8 +8,11 @@ import {
   Button,
   StyleSheet,
   ScrollView,
+  Image,
 } from 'react-native';
 import Picker from './src/Picker';
+import Modal from './src/Modal';
+// import avatar from './assets/images/avatar.png';
 // import Header from './src/Header';
 // import Generator from './src/Generator';
 // import NumList from './src/NumList';
@@ -58,6 +62,16 @@ class App extends Component {
   render() {
     return (
       <View style={styles.mainView}>
+        <Modal />
+        <Image
+          style={styles.image}
+          source={{
+            uri:
+              'https://content.surfit.io/thumbs/image/3L8Y3/KrxyG/11186415805ee62d715f9d9.png/cover-center-2x.webp',
+          }}
+          resizeMode="contain"
+          onLoadEnd={() => alert('image')}
+        />
         <Picker />
         <TextInput
           value={this.state.myTextInput}
@@ -117,6 +131,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 25,
     padding: 10,
+  },
+  image: {
+    width: '100%',
+    height: 300,
   },
 });
 
