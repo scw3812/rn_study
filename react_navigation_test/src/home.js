@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import 'react-native-gesture-handler';
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, Button} from 'react-native';
@@ -6,7 +5,7 @@ import {StyleSheet, View, Text, Button} from 'react-native';
 class HomeScreen extends Component {
   render() {
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <View style={styles.screenStryle}>
         <Text>Home Screen</Text>
         <Button
           title="To User Screen"
@@ -32,5 +31,13 @@ class HomeScreen extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  screenStryle: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default HomeScreen;

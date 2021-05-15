@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import 'react-native-gesture-handler';
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Button} from 'react-native';
+import {View, Text, Button} from 'react-native';
 
 class UserScreen extends Component {
   headerStyle = () => {
@@ -13,11 +13,19 @@ class UserScreen extends Component {
         fontWeight: 'bold',
         color: 'green',
       },
+      headerBackTitle: 'BACK',
+      headerRight: () => (
+        <Button
+          title="Go Back"
+          onPress={() => this.props.navigation.navigate('Home')}
+          color="orange"
+        />
+      ),
     });
   };
 
   render() {
-    // this.headerStyle();
+    this.headerStyle();
     const {params} = this.props.route;
     const {userIdx, userName, userLastName} = params ? params : {};
 

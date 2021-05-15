@@ -1,10 +1,11 @@
 import 'react-native-gesture-handler';
 import React, {Component} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {Button} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './src/home';
 import UserScreen from './src/user';
+import Logo from './src/logo';
 
 const Stack = createStackNavigator();
 
@@ -13,7 +14,7 @@ class App extends Component {
     return (
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="User"
+          initialRouteName="Home"
           screenOptions={{
             headerStyle: {backgroundColor: 'pink'},
             headerTintColor: 'red',
@@ -25,7 +26,18 @@ class App extends Component {
           <Stack.Screen
             name="Home"
             component={HomeScreen}
-            options={{title: 'Home Screen'}}
+            options={{
+              title: 'Home Screen',
+              headerTitle: <Logo />,
+              headerRight: () => (
+                <Button
+                  title="Info"
+                  // eslint-disable-next-line no-alert
+                  onPress={() => alert('I am a button')}
+                  color="orange"
+                />
+              ),
+            }}
           />
           <Stack.Screen
             name="User"
