@@ -1,6 +1,7 @@
 package com.react_native_imagepicker;
 
 import com.facebook.react.ReactActivity;
+import com.rt2zz.reactnativecontacts.ReactNativeContacts;
 
 public class MainActivity extends ReactActivity {
 
