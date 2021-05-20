@@ -111,6 +111,28 @@ class App extends Component {
     });
   };
 
+  openForm = () => {
+    const newContact = {
+      emailAddress: [
+        {
+          label: 'work',
+          email: 'wefsadf@naver.com',
+        },
+      ],
+      familyName: 'Go',
+      givenName: 'Gildong',
+      phoneNumber: [
+        {
+          label: 'mobile',
+          number: '(010) 1111-1111',
+        },
+      ],
+    };
+    Contacts.openContactForm(newContact)
+      .then()
+      .catch(err => console.warn(err));
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -123,6 +145,7 @@ class App extends Component {
         ))}
         <Button title="Load Contacts" onPress={() => this.getContacts()} />
         <Button title="Add Contacts" onPress={() => this.addContacts()} />
+        <Button title="Open Form" onPress={() => this.openForm()} />
       </View>
     );
   }
